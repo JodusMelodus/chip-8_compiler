@@ -1,4 +1,5 @@
 use std::io::Read;
+mod parser;
 
 #[cfg(not(debug_assertions))]
 fn get_source_file_path() -> String {
@@ -24,5 +25,5 @@ fn main() {
         .read_to_string(&mut buffer)
         .expect("Failed to read source file");
 
-    println!("{buffer}");
+    parser::parse(buffer);
 }
