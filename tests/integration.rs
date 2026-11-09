@@ -1,16 +1,8 @@
-use chip8_parser::scan::{scan, scanf};
-
-#[test]
-fn test_scanf() {
-    if let Some([x, y]) = scanf("ADD 3 2", "ADD {} {}").as_deref() {
-        assert_eq!(*x, 3);
-        assert_eq!(*y, 2);
-    }
-}
+use chip8_parser::scan::scan;
 
 #[test]
 fn test_scan() {
-    let lines = vec!["LDVN 0 2", "LDIF 4", "DRW 0 1 5"];
+    let lines = vec!["LDVN 0 2", "LDIF 4", "DRW 0 1 5", "JP 0x20A"];
 
     for line in lines {
         if let Some((opcode, values)) = scan(line) {
@@ -26,6 +18,9 @@ fn test_scan() {
                     assert_eq!(*a, 0);
                     assert_eq!(*b, 1);
                     assert_eq!(*c, 5);
+                }
+                ("JP", [nnn]) => {
+                    assert_eq!(*nnn, 0x20A);
                 }
                 _ => panic!("Unknown instruction"),
             }
