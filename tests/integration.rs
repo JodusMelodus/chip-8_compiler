@@ -1,4 +1,4 @@
-use chip8_parser::{parser::ParserError, scan::scan};
+use chip8::{parser::ParserError, scan::scan};
 
 #[test]
 fn test_scan() -> Result<(), ParserError> {
