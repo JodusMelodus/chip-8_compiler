@@ -1,24 +1,6 @@
 use std::io::Read;
-#[cfg(debug_assertions)]
-use std::io::Write;
-mod parser;
 
-#[cfg(not(debug_assertions))]
-fn get_source_file_path() -> String {
-    let args = std::env::args().collect::<Vec<String>>();
-    args.get(1).expect("No source file").to_string()
-}
-
-#[cfg(debug_assertions)]
-fn get_source_file_path() -> String {
-    let mut buffer = String::new();
-    print!("Enter path: ");
-    std::io::stdout().flush().expect("Failed to flush output");
-    let _ = std::io::stdin()
-        .read_line(&mut buffer)
-        .expect("Failed to read line");
-    buffer.trim().to_owned()
-}
+use chip8_parser::{get_source_file_path, parser};
 
 fn main() {
     let source_file_path = get_source_file_path();
