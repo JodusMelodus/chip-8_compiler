@@ -1,4 +1,6 @@
 use std::io::Read;
+#[cfg(debug_assertions)]
+use std::io::Write;
 mod parser;
 
 #[cfg(not(debug_assertions))]
@@ -10,6 +12,8 @@ fn get_source_file_path() -> String {
 #[cfg(debug_assertions)]
 fn get_source_file_path() -> String {
     let mut buffer = String::new();
+    print!("Enter path: ");
+    std::io::stdout().flush().expect("Failed to flush output");
     let _ = std::io::stdin()
         .read_line(&mut buffer)
         .expect("Failed to read line");
@@ -25,5 +29,12 @@ fn main() {
         .read_to_string(&mut buffer)
         .expect("Failed to read source file");
 
-    parser::parse(&buffer);
+    let words = parser::parse(&buffer);
+    let bytes = words
+        .iter()
+        .flat_map(|w| w.to_be_bytes())
+        .collect::<Vec<u8>>();
+
+    std::fs::write("out.ch8", &bytes).expect("Failed to write out.ch8");
+    println!("Wrote {} bytes", bytes.len());
 }
