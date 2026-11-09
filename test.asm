@@ -1,2 +1,7 @@
-TEST 1 2 3              ; Comment
-SET 124 2               ; another comment
+
+
+NOP
+
+CLS
+RET
+JP 0x123

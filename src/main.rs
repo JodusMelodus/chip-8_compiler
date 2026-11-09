@@ -25,5 +25,5 @@ fn main() {
         .read_to_string(&mut buffer)
         .expect("Failed to read source file");
 
-    parser::parse(buffer);
+    parser::parse(&buffer);
 }
