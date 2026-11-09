@@ -1,4 +1,4 @@
-pub fn scan(input: &str, fmt: &str) -> Option<Vec<u16>> {
+pub fn scanf(input: &str, fmt: &str) -> Option<Vec<u16>> {
     let mut rest = input;
     let mut fmt = fmt;
     let mut out = Vec::new();
@@ -24,4 +24,14 @@ pub fn scan(input: &str, fmt: &str) -> Option<Vec<u16>> {
         out.push(rest[..end].parse::<u16>().ok()?);
         rest = &rest[end..];
     }
+}
+
+pub fn scan(input: &str) -> Option<(&str, Vec<u16>)> {
+    let mut parts = input.split_whitespace();
+    let mut values = Vec::new();
+    let opcode = parts.next()?;
+    for v in parts {
+        values.push(v.parse::<u16>().ok()?);
+    }
+    Some((opcode, values))
 }
