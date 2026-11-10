@@ -35,7 +35,7 @@ chip8 test.asm
 | OR       | X, Y       | `VX` OR `VY` (stored in `VX`)        |
 | AND      | X, Y       | `VX` AND `VY` (stored in `VX`)       |
 | XOR      | X, Y       | `VX` XOR `VY` (stored in `VX`)       |
-| ADDC     | X, Y       | `VX` += NN (\w carry)                |
+| ADDC     | X, Y       | `VX` += VY (\w carry)                |
 | SUB      | X, Y       | `VX` -= `VY`                         |
 | SHR      | X, Y       | `VX` >>= 1                           |
 | SUBN     | X, Y       | `VX` = `VY` - `VX`                   |

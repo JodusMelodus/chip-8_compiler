@@ -38,7 +38,7 @@ pub fn parse(source_code: &str) -> Result<Vec<u16>, ParserError> {
             ("OR", [x, y]) => 0x8001 | (x << 8) | (y << 4), // OR
             ("AND", [x, y]) => 0x8002 | (x << 8) | (y << 4), // AND
             ("XOR", [x, y]) => 0x8003 | (x << 8) | (y << 4), // XOR
-            ("ADDC", [x, y]) => 0x8004 | (x << 8) | (y << 4), // VX += NN \w carry
+            ("ADDC", [x, y]) => 0x8004 | (x << 8) | (y << 4), // VX += VY \w carry
             ("SUB", [x, y]) => 0x8005 | (x << 8) | (y << 4), // VX -= VY
             ("SHR", [x, y]) => 0x8006 | (x << 8) | (y << 4), // VX >>= 1
             ("SUBN", [x, y]) => 0x8007 | (x << 8) | (y << 4), // VX = VY - VX
