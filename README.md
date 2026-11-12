@@ -1,5 +1,17 @@
 # CHIP-8 Compiler
 
+A minimal compiler made for the CHIP-8 interpreter/emulator. Find better documentation [here](https://aquova.net/chip8/chip8.pdf) or [here](https://tobiasvl.github.io/blog/write-a-chip-8-emulator/)
+
+[My CHIP-8 Emulator](https://github.com/JodusMelodus/chip-8)
+
+## Chip-8 Specifications
+
+- Memory: 4 kilobytes of RAM
+- Display: 64x32 monochrome display
+- 8-bit delay timer decremented to 0 at 60Hz
+- 8-bit sound timer decremented to 0 at 60Hz
+- 16 8-bit general purpose registers
+
 ## Usage
 
 Run the following command in the same directory as `chip8.exe`, or store it as a global key in your environment variables.
